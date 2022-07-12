@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    MemorySize: 128
+    Runtime: go1.x
+    Handler: main
+    Timeout: 3
+
+Resources:
+  ResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name:
+        Ref: AWS::StackName
+  GinFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Events:
+        ProxyApi:
+          Type: Api
+          Properties:
+            Path: /gin/{proxy+}
+            Method: ANY
+    Metadata:
+      BuildMethod: makefile
+
+  EchoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Events:
+        ProxyApi:
+          Type: Api
+          Properties:
+            Path: /echo/{proxy+}
+            Method: ANY
+    Metadata:
+      BuildMethod: makefile
+
+Outputs:
+  ProdApiUrl:
+    Value: !Sub "https://{ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
