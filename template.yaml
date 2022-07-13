@@ -4,9 +4,8 @@ Transform: AWS::Serverless-2016-10-31
 Globals:
   Function:
     MemorySize: 128
-    Runtime: go1.x
-    Handler: main
     Timeout: 3
+    Tracing: Active
 
 Resources:
   ResourceGroup:
@@ -17,6 +16,8 @@ Resources:
   GinFunction:
     Type: AWS::Serverless::Function
     Properties:
+      Runtime: go1.x
+      Handler: main
       Events:
         ProxyApi:
           Type: Api
@@ -25,10 +26,11 @@ Resources:
             Method: ANY
     Metadata:
       BuildMethod: makefile
-
   EchoFunction:
     Type: AWS::Serverless::Function
     Properties:
+      Runtime: go1.x
+      Handler: main
       Events:
         ProxyApi:
           Type: Api
@@ -37,6 +39,51 @@ Resources:
             Method: ANY
     Metadata:
       BuildMethod: makefile
+  PythonCommonLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: layers/python-common
+      CompatibleRuntimes:
+        - python3.9
+    Metadata:
+      BuildMethod: python3.9
+  PythonInlineFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: python3.9
+      Layers:
+        - Ref: PythonCommonLayer
+      InlineCode: |
+        import common
+        def handler(event, context):
+          print(common.say_hello())
+          print(common.call_echo())
+  NodejsCommonLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: layers/nodejs-common
+      CompatibleRuntimes:
+        - nodejs16.x
+    Metadata:
+      BuildMethod: nodejs16.x
+  NodejsInlineFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs16.x
+      Layers:
+        - Ref: NodejsCommonLayer
+      Environment:
+        Variables:
+          DEBUG: "*"
+      InlineCode: |
+        const debug = require('debug')('lambda')
+        module.exports = {
+          async handler(event) {
+            debug(JSON.stringify(event, null, 2))
+          }
+        }
 
 Outputs:
   ProdApiUrl:
