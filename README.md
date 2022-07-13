@@ -2,7 +2,11 @@
 
 ## Usage
 
-Run `make init` to initialize AWS SAM config.
+Start with generating SAM configuration file by invoking `sam deploy --guided`
 
-- `make build`
-- `make deploy`
+SAM cli commands:
+
+- `sam build` - build all lambda functions and layers
+- `sam deploy` - deploy application
+- `sam local start-api` - launch api locally
+
