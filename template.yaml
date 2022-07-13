@@ -86,5 +86,9 @@ Resources:
         }
 
 Outputs:
-  ProdApiUrl:
-    Value: !Sub "https://{ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
+  ApiUrl:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
+  PythonFunctionArn:
+    Value: !GetAtt PythonInlineFunction.Arn
+  NodejsFunctionArn:
+    Value: !GetAtt NodejsInlineFunction.Arn

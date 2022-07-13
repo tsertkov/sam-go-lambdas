@@ -21,4 +21,9 @@ SAM cli commands:
 - `sam build` - build all lambda functions and layers
 - `sam deploy` - deploy application
 - `sam local start-api` - launch api locally
+- `sam logs` - remote logs monitoring
 
+Test scripts:
+
+- `scripts/call-api-gw.sh` - calling api gateway endpoints to trigger lambdas
+- `scripts/invoke-lambdas.sh` - aws cli lambdas invocations
