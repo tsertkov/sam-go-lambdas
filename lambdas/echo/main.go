@@ -15,6 +15,7 @@ var echoLambda *echoAdapter.EchoLambda
 func init() {
   e := echo.New()
   e.Use(middleware.Recover())
+  e.Use(middleware.Logger())
   initRoutes(e, "/echo")
   echoLambda = echoAdapter.New(e)
 }
