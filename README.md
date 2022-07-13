@@ -7,8 +7,8 @@ Serverless playgroup with AWS SAM.
 - Building lambdas using Makefile
 - ApiGateway lambda proxy integration
 - Go compiled lambdas
-- Python lambda layer with pypy builder
-- Nodejs lambda layer with npm builder
+- Python lambda layer with PythonPipBuilder
+- Nodejs lambda layer with NodejsNpmBuilder
 - Python lambda with inline code
 - Nodejs lambda with inline code
 
