@@ -26,7 +26,8 @@ SAM cli commands:
 
 Make tasks:
 
-- `make test` - unit test lambdas & layers
+- `make build` - test and build lambdas & layers
+- `make test` - test lambdas & layers
 
 Test scripts:
 
