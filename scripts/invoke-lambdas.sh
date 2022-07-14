@@ -37,5 +37,5 @@ function invoke_lambda () {
   echo -n "OK: " && cat test-response.json && echo
 }
 
-invoke_lambda $python_lambda_arn
-invoke_lambda $nodejs_lambda_arn
+invoke_lambda $python_lambda_arn:live
+invoke_lambda $nodejs_lambda_arn:live

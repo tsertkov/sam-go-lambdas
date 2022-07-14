@@ -3,6 +3,7 @@ Transform: AWS::Serverless-2016-10-31
 
 Globals:
   Function:
+    AutoPublishAlias: live
     MemorySize: 128
     Timeout: 3
     Tracing: Active
