@@ -5,12 +5,12 @@ Serverless playgroup with AWS SAM.
 ## Features played
 
 - Building lambdas using Makefile
+- Building Python lambda layer with PythonPipBuilder
+- Building Nodejs lambda layer with NodejsNpmBuilder
 - ApiGateway lambda proxy integration
 - Go compiled lambdas
-- Python lambda layer with PythonPipBuilder
-- Nodejs lambda layer with NodejsNpmBuilder
-- Python lambda with inline code
-- Nodejs lambda with inline code
+- Python lambda with inline code and shared layer
+- Nodejs lambda with inline code and shared layer
 - ResourceGroup for grouping application resources
 
 ## Usage
