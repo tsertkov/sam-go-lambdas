@@ -11,6 +11,7 @@ Serverless playgroup with AWS SAM.
 - Nodejs lambda layer with NodejsNpmBuilder
 - Python lambda with inline code
 - Nodejs lambda with inline code
+- ResourceGroup for grouping application resources
 
 ## Usage
 
