@@ -24,6 +24,10 @@ SAM cli commands:
 - `sam local start-api` - launch api locally
 - `sam logs` - remote logs monitoring
 
+Make tasks:
+
+- `make test` - unit test lambdas & layers
+
 Test scripts:
 
 - `scripts/call-api-gw.sh` - calling api gateway endpoints to trigger lambdas
