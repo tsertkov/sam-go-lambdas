@@ -4,20 +4,20 @@ Serverless playground with AWS SAM.
 
 ## Features played
 
-- Building Go lambdas using Makefile
-- Building Python lambda layer using Makefine
-- Building Python lambda layer with PythonPipBuilder
-- Building Nodejs lambda layer with NodejsNpmBuilder
+- Build Go lambdas using Makefile
+- Build Python lambda layer using Makefile
+- Build Python lambda layer with AWS SAM PythonPipBuilder
+- Build Nodejs lambda layer with AWS SAM NodejsNpmBuilder
 - ApiGateway lambda proxy integration
 - Go API lambdas with Gin and Echo frameworks
-- Inline Python lambda using shared layers
-- Inline Nodejs lambda using shared layers
+- Inline Python lambda using shared layers (no tests)
+- Inline Nodejs lambda using shared layers (no tests)
 - ResourceGroup for grouping application resources
 - Build inside docker container with `make ci-build`
 
 ## Usage
 
-Start with generating SAM configuration file by invoking `sam deploy --guided`
+Start with generating SAM configuration file by invoking `sam deploy --guided`.
 
 Cli commands:
 
@@ -28,5 +28,5 @@ Cli commands:
 
 Scripts:
 
-- `scripts/call-api-gw.sh` - calls deployed api gateway endpoints
-- `scripts/invoke-lambdas.sh` - invokes deployed lambdas with aws cli
+- `scripts/call-api-gw.sh` - invoke deployed lambdas with aws api gateway
+- `scripts/invoke-lambdas.sh` - invoke deployed lambdas with aws cli
