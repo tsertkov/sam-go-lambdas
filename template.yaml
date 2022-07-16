@@ -3,7 +3,6 @@ Transform: AWS::Serverless-2016-10-31
 
 Globals:
   Function:
-    AutoPublishAlias: live
     MemorySize: 128
     Timeout: 3
     Tracing: Active
@@ -17,6 +16,7 @@ Resources:
   GinFunction:
     Type: AWS::Serverless::Function
     Properties:
+      AutoPublishAlias: live
       Runtime: go1.x
       Handler: main
       Events:
@@ -30,6 +30,7 @@ Resources:
   EchoFunction:
     Type: AWS::Serverless::Function
     Properties:
+      AutoPublishAlias: live
       Runtime: go1.x
       Handler: main
       Events:
@@ -40,26 +41,39 @@ Resources:
             Method: ANY
     Metadata:
       BuildMethod: makefile
-  PythonCommonLayer:
+  PythonCommonLayerA:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      ContentUri: layers/python-common
+      ContentUri: layers/python-common-a
       CompatibleRuntimes:
         - python3.9
     Metadata:
       BuildMethod: python3.9
+  PythonCommonLayerB:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: .
+      CompatibleRuntimes:
+        - python3.9
+    Metadata:
+      BuildMethod: makefile
   PythonInlineFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
       Runtime: python3.9
       Layers:
-        - Ref: PythonCommonLayer
+        - Ref: PythonCommonLayerA
+        - Ref: PythonCommonLayerB
       InlineCode: |
-        import common
+        import common_a
+        import common_b
         def handler(event, context):
-          print(common.say_hello())
-          print(common.call_echo())
+          # call common_a layer
+          print(common_a.say_hello())
+          print(common_a.call_echo())
+          # call common_b layer
+          print(common_b.say_hello())
   NodejsCommonLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
