@@ -4,6 +4,10 @@ Serverless playground with AWS SAM.
 
 ## Features played
 
+- Build lambdas inside docker containers
+
+  `make ci-build` -> `sam build --use-container`
+    
 - Build Go lambdas using Makefile
 - Build Python lambda layer using Makefile
 - Build Python lambda layer with AWS SAM PythonPipBuilder
@@ -13,7 +17,6 @@ Serverless playground with AWS SAM.
 - Inline Python lambda using shared layers (no tests)
 - Inline Nodejs lambda using shared layers (no tests)
 - ResourceGroup for grouping application resources
-- Build inside docker container with `make ci-build`
 
 ## Usage
 
