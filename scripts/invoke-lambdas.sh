@@ -26,7 +26,7 @@ function invoke_lambda () {
       --cli-binary-format raw-in-base64-out \
       --payload "{ \"name\": \"thisismyname\" }" \
       --query StatusCode \
-      test-response.json
+      "${DIR}/test-response.json"
   )"
 
   if [ "$code" != 200 ]; then
@@ -34,7 +34,8 @@ function invoke_lambda () {
     exit 1
   fi
 
-  echo -n "OK: " && cat test-response.json && echo
+  echo -n "OK: " && cat "${DIR}/test-response.json" && echo
+  rm "${DIR}/test-response.json"
 }
 
 invoke_lambda $python_lambda_arn
