@@ -13,6 +13,7 @@ Serverless playgroup with AWS SAM.
 - Inline Python lambda using shared layers
 - Inline Nodejs lambda using shared layers
 - ResourceGroup for grouping application resources
+- Build inside docker container with `make ci-build`
 
 ## Usage
 
