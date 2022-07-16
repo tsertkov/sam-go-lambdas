@@ -1,6 +1,6 @@
 # sam-go-lambdas
 
-Serverless playgroup with AWS SAM.
+Serverless playground with AWS SAM.
 
 ## Features played
 
@@ -26,7 +26,7 @@ Cli commands:
 - `sam local start-api` - launch api locally
 - `sam logs` - remote logs monitoring
 
-Test scripts:
+Scripts:
 
 - `scripts/call-api-gw.sh` - calls deployed api gateway endpoints
 - `scripts/invoke-lambdas.sh` - invokes deployed lambdas with aws cli
