@@ -2,7 +2,7 @@ build_cmd=CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -tags nomsgpack -o ${AR
 build : test-layers
 	sam build --parallel
 ci-build : test-layers
-	sam build use-container --parallel
+	sam build --use-container --parallel
 build-GinFunction : test-GinFunction
 	cd lambdas/gin && $(build_cmd)
 build-EchoFunction : test-EchoFunction
