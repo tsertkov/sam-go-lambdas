@@ -28,6 +28,7 @@ Cli commands:
 - `sam deploy` - deploy application
 - `sam local start-api` - launch api locally
 - `sam logs` - remote logs monitoring
+- `sam delete` - delete provisioned infra
 
 Scripts:
 
